@@ -25,6 +25,9 @@ export default class App extends Component {
   themeChange = (newTheme) => {
     this.setState({ themeSelected: newTheme });
   }
+  logoutHandler=()=>{
+    this.setState({isLoggedIn: false});
+  }
   render() {
 
     let screen;
@@ -33,7 +36,7 @@ export default class App extends Component {
      else
     screen =
       <>
-        <Header />
+        <Header logoutHandler={this.logoutHandler}/>
         <Switch>
           <Route path="/" exact component={Body} />
           <Route path="/home" exact component={Body} />

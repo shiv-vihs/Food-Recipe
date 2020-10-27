@@ -87,6 +87,7 @@ class header extends Component {
                         <NavLink to="/contact-page"><StyledOptions ><span>Contact Us</span></StyledOptions></NavLink>
 
                         <NavLink to="/submit-recipe"><StyledOptions ><span>Submit Recipe</span></StyledOptions></NavLink>
+                        <a style={{cursor:"pointer"}} onClick={this.props.logoutHandler}><StyledOptions><span>Logout</span></StyledOptions></a>
                     </Right>
                 </HeaderDiv>
             </>
