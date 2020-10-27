@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "../../App.css"
-import { SelectedMobileDiv, Heading, SubHeading, DropDownContainer, Button, MenuSpan, MobileDiv, MobileHeader, HeaderDiv, DropdownItem, StyledOptions, Left, Right, StyledOptionsDemos, StyledOptionsPages, StyledOptionsRecipes, DemosDropdown, RecipesDropdown, PagesDropdown } from "./styles"
+import { StyledLogout, SelectedMobileDiv, Heading, SubHeading, DropDownContainer, Button, MenuSpan, MobileDiv, MobileHeader, HeaderDiv, DropdownItem, StyledOptions, Left, Right, StyledOptionsDemos, StyledOptionsPages, StyledOptionsRecipes, DemosDropdown, RecipesDropdown, PagesDropdown } from "./styles"
 import {connect} from "react-redux"
 import logo from "../../Assets/logo.png"
 // import {Link} from "react-router-dom"
@@ -34,7 +34,7 @@ class header extends Component {
                         <SubHeading>Typography</SubHeading>
                         <Heading to="/contact-page" >Contact</Heading>
                         <Heading to="/submit-recipe" >Submit Recipe</Heading>
-    
+                        <StyledLogout onClick={this.props.logoutHandler}>Logout</StyledLogout>
     
                     </DropDownContainer>
                 </>;

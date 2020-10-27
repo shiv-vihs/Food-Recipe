@@ -193,3 +193,17 @@ color:#808080;
     background-color: #c0c0c0;
 }
 `
+export const StyledLogout= styled.a`
+width:100%;
+font-family:OpenSans;
+text-decoration:none;
+font-weight:600;
+padding:12px 20px;
+display:block;
+cursor: pointer;
+background-color:#f0f0f0;
+color:#808080;
+&:hover{
+    color: white;
+    background-color: #c0c0c0;
+}`
