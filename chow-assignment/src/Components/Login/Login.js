@@ -7,7 +7,9 @@ export default class Login extends Component {
         email: null,
         pass: null,
         UserData: {},
-        errlogin: null
+        errlogin: null,
+        errors: {},
+        success:null
     }
     
     onChangeEmail = (e) => {
@@ -17,18 +19,46 @@ export default class Login extends Component {
         this.setState({ pass: e.target.value });
     }
     equalCheck = () => {
+        let errors = {};
+        let formIsValid = true;
+
+
+        //Email
+        if(!this.state.email){
+            
+           formIsValid = false;
+           errors["email"] = "Field cannot be empty";
+        }
+
+        else{
+            console.log("Inside");
+           let lastAtPos = this.state.email.lastIndexOf('@');
+           let lastDotPos = this.state.email.lastIndexOf('.');
+
+           if (!(lastAtPos < lastDotPos && lastAtPos > 0 && this.state.email.indexOf('@@') == -1 && lastDotPos > 2 && (this.state.email.length - lastDotPos) > 2)) {
+              formIsValid = false;
+              errors["email"] = "Email entered is not valid";
+            }
+       }  
+
+       this.setState({errors: errors});
+       console.log(formIsValid)
+       if(formIsValid){
+           
+       
+
         let postData={email: this.state.email, password:this.state.pass,returnSecureToken:true};
         axios.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBBTcBYXnaAmM1YEg6QLpggdBscZJXVJfk', postData)
             .then(response => {
                 this.setState({UserData:response});
                 console.log(response);
                 if(response.status == 200){
-                    alert("User Logged In Successfully! Click Login Again");
+                    this.setState({success:"Successfully Logged In. Press Log In button again to continue"});
+                    this.setState({errlogin:null});
                 }
             }).catch((error)=>{
             
-                //console.log({error});
-                this.setState({errlogin: error.response.data.error.message});
+                this.setState({errlogin:"Check Email and Password for correctness"})
                 
             });
          let isSuccessful = false;
@@ -36,15 +66,17 @@ export default class Login extends Component {
              isSuccessful= true;
          }
         this.props.Check(isSuccessful);
-        
+       }
     }
     render() {
         
         return (
             <>
                 <StyledSignup>Log In</StyledSignup>
-        <Error>{this.state.errlogin}</Error>
+                <span style={{color: "red"}}>{this.state.errlogin}</span>
+                <p style={{color:"green"}}>{this.state.success}</p>
                 <FieldHeading >E-mail</FieldHeading>
+                <span style={{color: "red"}}>{this.state.errors["email"]}</span>
                 <StyledTextField onChange={(event) => { this.onChangeEmail(event) }} placeholder="E-mail" />
 
                 <FieldHeading >Password</FieldHeading>

@@ -48,11 +48,12 @@ export default class Body extends Component {
                 console.log(this.state.RecipeList);
                 //console.log(response.data);
             });
+            window.scrollTo(0,0);
     }
     state = {
         RecipeList: {},
         searchcontent:null,
-        popular: [Featured01, Featured02, Featured03],
+        popular: [{picture:Featured01,name:"Chocolate Cake And Green Tea Cream", rating:"5",key:5}, {picture:Featured02,name:"Mexican Grilled Corn Recipe", rating:"5",key:0}, {picture:Featured03, name:"Pollo Barracho With Homemade Tortillas",rating:"5", key:7}],
         covers: [{
             name: "Mexican Grilled Corn Recipe",
             source: Slider01,

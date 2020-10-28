@@ -10,16 +10,24 @@ align-items:center;
 
 export const Contact=styled.div`
 width:960px;
+display:flex;
+justify-content:flex-start;
 margin: 0 auto;
 font-family:OpenSans;
 font-size:24px;
 font-weight:500;
 line-height:30px;
 color:rgb(96,96,96);
+@media only screen and (max-width:960px){
+  width:768px;
+}
+@media only screen and (max-width:767px){
+  width:480px;
+}
 `
 
 export const ImageDiv = styled.div`
-width:960px;
+max-width:960px;
 height:200px;
 margin:40px auto;
 display:flex;
@@ -29,7 +37,12 @@ background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 background-image: url(${({ background }) => background});
-
+@media only screen and (max-width:960px){
+  max-width:768px;
+}
+@media only screen and (max-width:767px){
+  max-width:480px;
+}
 `
 export const OuterContainer=styled.div`
 max-width:960px;
@@ -37,18 +50,32 @@ margin:0 auto;
 display:flex;
 justify-content: space-between;
 height:auto;
+@media only screen and (max-width:960px){
+  max-width:768px;
+}
+@media only screen and (max-width:767px){
+  flex-wrap:wrap;
+  max-width:480px;
+}
 `
 export const LeftContainer=styled.div`
 width:73%;
 height:auto;
 //height:100px;
 //background-color:purple;
+@media only screen and (max-width:767px){
+  width:100%;
+}
 `
 export const RightContainer=styled.div`
 width:23%;
 height:auto;
 //height:100px;
 //background-color:green;
+@media only screen and (max-width:767px){
+  width:100%;
+  margin-bottom:20px;
+}
 `
 
 export const SpanHeading=styled.div`
@@ -89,6 +116,10 @@ font-weight:600;
   color:#808080;
   font-family:OpenSans;
 }
+
+
+
+
 `
 
 export const ShareContainer = styled.div`
@@ -96,6 +127,11 @@ display:flex;
 height:auto;
 width:100%;
 flex-wrap:wrap;
+@media only screen and (max-width:767px){
+  margin-top:20px;
+  width:100%;
+}
+
 
 `
 export const Facebook = styled.div`

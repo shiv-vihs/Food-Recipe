@@ -3,12 +3,18 @@ import styled from "styled-components"
 export const LoginLeft = styled.div`
 width:55%;
 height:auto;
+display:block;
+@media only screen and (max-width:700px){
+    display:none;
+}
 `
 export const LoginRight = styled.div`
 width:45%;
 height:auto;
 padding:20px;
-
+@media only screen and (max-width:700px){
+    width:100%;
+}
 `
 export const LoginContainer = styled.div`
 display:flex;

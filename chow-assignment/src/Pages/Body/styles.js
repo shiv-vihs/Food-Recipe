@@ -217,7 +217,7 @@ background-repeat: no-repeat;
 background-size: cover;
 background-image: url(${({ background }) => background});
 
-@media only screen and (max-width:768px){
+@media only screen and (max-width:767px){
     margin-bottom:20px;
 }
 `
@@ -232,7 +232,7 @@ margin-bottom:50px;
 margin-top:0px;
 //visibility:visible;
 
-@media only screen and (max-width:768px){
+@media only screen and (max-width:767px){
     display:none;
 }
 `

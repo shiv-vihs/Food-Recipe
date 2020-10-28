@@ -9,7 +9,7 @@ height:auto;
     //max-width:768px;
     max-width:786px;
 }
-@media only screen and (max-width:786px){
+@media only screen and (max-width:767px){
     //max-width:768px;
     max-width:480px;
     
@@ -26,7 +26,7 @@ color:white;
 width:50%;
 margin:0;
 margin-top:24px;
-@media only screen and (max-width:786px){
+@media only screen and (max-width:787px){
     //max-width:768px;
     width:100%;
     font-size:32px;

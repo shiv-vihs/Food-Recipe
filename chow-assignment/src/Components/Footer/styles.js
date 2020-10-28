@@ -14,9 +14,14 @@ margin:0 auto;
 height:auto;
 display:flex;
 justify-content:space-between;
-@media only screen and (max-width:768px){
+@media only screen and (max-width:767px){
     flex-wrap:wrap;
     max-width:480px;
+    //align-items:flex-start;
+}
+@media only screen and (max-width:480px){
+    flex-wrap:wrap;
+    max-width:320px;
     //align-items:flex-start;
 }
 `
@@ -24,7 +29,7 @@ justify-content:space-between;
 export const Column = styled.div`
 font-family: OpenSans;
 width:25%;
-@media only screen and (max-width:700px){
+@media only screen and (max-width:768px){
     width:100%;
 }
 

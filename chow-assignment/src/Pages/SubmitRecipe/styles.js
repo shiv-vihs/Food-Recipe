@@ -57,6 +57,7 @@ export const SubmitButton = styled.button`
 border: none;
 background-color: ${props=>props.theme.color};
 color: #fff;
+cursor:pointer;
 padding: 10px 18px;
 margin-top:32px;
 font-family:OpenSans;

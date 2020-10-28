@@ -3,7 +3,7 @@ import "../../App.css"
 import { StyledLogout, SelectedMobileDiv, Heading, SubHeading, DropDownContainer, Button, MenuSpan, MobileDiv, MobileHeader, HeaderDiv, DropdownItem, StyledOptions, Left, Right, StyledOptionsDemos, StyledOptionsPages, StyledOptionsRecipes, DemosDropdown, RecipesDropdown, PagesDropdown } from "./styles"
 import {connect} from "react-redux"
 import logo from "../../Assets/logo.png"
-// import {Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 import { NavLink } from "./styles"
 class header extends Component {
     render() {
@@ -21,18 +21,10 @@ class header extends Component {
                 <>
                     <DropDownContainer>
                         <Heading to="/home">Home</Heading>
-                        <Heading >Demos</Heading>
-                        <SubHeading>Grid Homepage</SubHeading>
-                        <SubHeading>List Homepage</SubHeading>
-                        <SubHeading>Boxed Version</SubHeading>
                         <Heading >Recipes</Heading>
-                        <SubHeading>Browse Recipes</SubHeading>
-                        <SubHeading>Recipe Page #1</SubHeading>
-                        <SubHeading>Recipe Page #2</SubHeading>
-                        <Heading >Pages</Heading>
-                        <SubHeading>Shortcodes</SubHeading>
-                        <SubHeading>Typography</SubHeading>
-                        <Heading to="/contact-page" >Contact</Heading>
+                        <Link style={{textDecoration:"none"}}to={"/0"}><SubHeading>Browse Recipes</SubHeading></Link>
+                        <Link style={{textDecoration:"none"}}to={"/0"}><SubHeading>Recipe Page #1</SubHeading></Link>
+                        <Heading to="/contact-page" >Contact Us</Heading>
                         <Heading to="/submit-recipe" >Submit Recipe</Heading>
                         <StyledLogout onClick={this.props.logoutHandler}>Logout</StyledLogout>
     
@@ -52,37 +44,25 @@ class header extends Component {
         return (
             <>
                 <MobileHeader>
-                    <div><img src={logo} height="" alt="logo" /></div>
+                <Link to={"/home"}><div><img src={logo} height="" alt="logo" /></div></Link>
                     {mobileDiv}
                     {dropDown}
                 </MobileHeader>
                 <HeaderDiv>
                     <Left>
-                        <img src={logo} height="" alt="logo" />
+                        <Link to={"/home"}><img src={logo} height="" alt="logo" /></Link>
                     </Left>
                     <Right>
                         <NavLink to="/home"><StyledOptions className="Home" ><span>Home</span></StyledOptions></NavLink>
 
-                        <NavLink><StyledOptionsDemos className="Demos"><span>Demos</span>
-                            <DemosDropdown>
-                                <DropdownItem>Grid HomePage</DropdownItem>
-                                <DropdownItem>List HomePage</DropdownItem>
-                                <DropdownItem>Box Version</DropdownItem>
-                            </DemosDropdown></StyledOptionsDemos></NavLink>
+                        
 
                         <NavLink><StyledOptionsRecipes className="Recipes" ><span>Recipes</span>
                             <RecipesDropdown>
-                                <DropdownItem>Browse Recipes</DropdownItem>
-                                <DropdownItem>Recipe Page #1</DropdownItem>
-                                <DropdownItem>Recipe Page #2</DropdownItem>
+                                <Link style={{textDecoration:"none"}}to={"/0"}><DropdownItem>Browse Recipes</DropdownItem></Link>
+                                <Link style={{textDecoration:"none"}}to={"/0"}><DropdownItem>Recipe Page #1</DropdownItem></Link>
+                                
                             </RecipesDropdown></StyledOptionsRecipes></NavLink>
-
-
-                        <NavLink><StyledOptionsPages className="Pages" ><span>Pages</span>
-                            <PagesDropdown>
-                                <DropdownItem>Shortcodes</DropdownItem>
-                                <DropdownItem>Typography</DropdownItem>
-                            </PagesDropdown></StyledOptionsPages></NavLink>
 
                         <NavLink to="/contact-page"><StyledOptions ><span>Contact Us</span></StyledOptions></NavLink>
 

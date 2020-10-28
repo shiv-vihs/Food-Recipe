@@ -13,8 +13,8 @@ margin-bottom:3%;
     margin-bottom:2%;
 }
 @media only screen and (max-width: 767px){
-    width:96%;
-    margin-right:2%;
+    width:100%;
+    margin-right:0;
     margin-bottom:2%;
 }
 

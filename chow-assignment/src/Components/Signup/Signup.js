@@ -9,7 +9,9 @@ export default class Signup extends Component {
         userName:null,
         password:null,
         repeatPassword:null,
-        errormsg:null
+        errormsg:null,
+        errors: {},
+        success:null
     }
     nameChange=(event)=>{
         this.setState({name: event.target.value});
@@ -27,29 +29,58 @@ export default class Signup extends Component {
         this.setState({password: event.target.value});
     }
     onSubmitHandler=()=>{
+        let errors = {};
+        let formIsValid = true;
+
+
+        //Email
+        if(!this.state.email){
+            
+           formIsValid = false;
+           errors["email"] = "Field cannot be empty";
+        }
+
+        else{
+            console.log("Inside");
+           let lastAtPos = this.state.email.lastIndexOf('@');
+           let lastDotPos = this.state.email.lastIndexOf('.');
+
+           if (!(lastAtPos < lastDotPos && lastAtPos > 0 && this.state.email.indexOf('@@') == -1 && lastDotPos > 2 && (this.state.email.length - lastDotPos) > 2)) {
+              formIsValid = false;
+              errors["email"] = "Email entered is not valid";
+            }
+       }  
+
+       this.setState({errors: errors});
+       console.log(formIsValid)
+       if(formIsValid){
         const postData={email: this.state.email, password: this.state.password, returnSecureToken: true};
         axios.post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyBBTcBYXnaAmM1YEg6QLpggdBscZJXVJfk",postData).then
         (response=>{
             if(response.status == 200){
-                alert("User Signed up Successfully! Please Log In");
+                this.setState({success:"Successfully Signed Up. Click Login to Sign In"});
+                this.setState({errormsg:null});
             }
                 console.log(response);
             }
         ).catch((error)=>{
             
             //console.log({error});
-            this.setState({errormsg: error.response.data.error.message});
+            this.setState({errormsg: "Check if Password and Repeat Password are equal and minimum of length 6"});
             
         })
     }
+    }
     render() {
         return (
-            <>
+            <>  
             <StyledSignup>SignUp</StyledSignup>
-            <Error>{this.state.errormsg}</Error>
+            <p style={{color:"green"}}>{this.state.success}</p>
+            <span style={{color: "red"}}>{this.state.errormsg}</span>
             <FieldHeading >Name</FieldHeading>
             <StyledTextField onChange={(event)=>this.nameChange(event)} placeholder="Name"/>
             <FieldHeading >E-mail</FieldHeading>
+            <span style={{color: "red"}}>{this.state.errors["email"]}</span>
             <StyledTextField onChange={(event)=>this.emailChange(event)} placeholder="E-mail"/>
             <FieldHeading>Username</FieldHeading>
             <StyledTextField onChange={(event)=>this.userNameChange(event)} placeholder="Username"/>
