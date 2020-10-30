@@ -9,13 +9,13 @@ export default class Footer extends Component {
                     <Content>
                         <Column>
 
-                            <ColumnHeading>About</ColumnHeading>
-                            <Span></Span>
+                            <Span><ColumnHeading>About</ColumnHeading></Span>
+                            
                             <FooterText>Cras at ultrices erat, sed vulputate eros. Nunc at augue gravida est fermentum vulputate. Pellentesque et ipsum in dui malesuada tempus.</FooterText>
 
                         </Column>
-                        <Column><ColumnHeading>Archives</ColumnHeading>
-                            <Span></Span>
+                        <Column><Span><ColumnHeading>Archives</ColumnHeading></Span>
+                            
                             <FooterText>
                                 <StyledUl>
                                     <StyledLi>June 2016</StyledLi>
@@ -27,8 +27,8 @@ export default class Footer extends Component {
 
                             </FooterText>
                         </Column>
-                        <Column><ColumnHeading>Recipes</ColumnHeading>
-                            <Span></Span>
+                        <Column><Span><ColumnHeading>Recipes</ColumnHeading></Span>
+                            
                             <FooterText>
                             <StyledUl>
                                     <StyledLi>Browse Recipe</StyledLi>
@@ -37,8 +37,7 @@ export default class Footer extends Component {
                                 </StyledUl>
                             </FooterText>
                         </Column>
-                        <Column><ColumnHeading>Newsletter</ColumnHeading>
-                            <Span></Span>
+                        <Column><Span><ColumnHeading>Newsletter</ColumnHeading></Span>
                             <FooterText>
                                 <div>Sign up to receive email updates on new product announcements, gift ideas, sales and more</div>
                                 <InputWrapper>

@@ -109,6 +109,7 @@ max-width:960px;
 margin: 20px auto;
 min-height:74px;
 display: none;
+position:relative;
 @media only screen and (max-width:960px){
     display:block;
     max-width:768px;
@@ -161,6 +162,8 @@ background-color: #8DC63F;
 `
 
 export const DropDownContainer=styled.div`
+position:absolute;
+z-index:100;
 width:100%;
 `
 export const Heading=styled(Link)`

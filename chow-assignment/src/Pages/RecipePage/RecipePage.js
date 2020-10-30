@@ -6,12 +6,10 @@ import AuthorPhoto from "../../Assets/author-photo.png"
 import Featured01 from "../../Assets/featuredRecipe-01.jpg"
 import Featured02 from "../../Assets/featuredRecipe-02.jpg"
 import Featured03 from "../../Assets/featuredRecipe-03.jpg"
+import recipeBackground from "../../Assets/recipeBackground.jpg"
 import {
     OuterContainer,
     RightContainer,
-    // StyledSearchButton,
-    // StyledSearch,
-    // StyledSearchWrapper,
     AuthorContainer,
     LeftHeading, SpanName,
     SpanTitle,
@@ -27,6 +25,7 @@ import {
     Twitter, GooglePlus,
     ContainerWrapper,
 } from "../Body/styles"
+import { RecipeBackground, Wrapper } from './styles'
 export default class RecipePage extends Component {
     componentDidMount() {
         axios.get('https://foodrecipejson.firebaseio.com/.json')
@@ -49,16 +48,21 @@ export default class RecipePage extends Component {
 
         //console.log("Inside recipe page");
         return (
+            <>
+            <RecipeBackground background={recipeBackground}>
+                <Wrapper></Wrapper>
+            </RecipeBackground>
             <ContainerWrapper>
 
                     <OuterContainer>
+                    
                         {leftContainer}
                         <RightContainer>
                             {/* <StyledSearchWrapper>
                                 <StyledSearch placeholder="Search for recipes" />
                                 <StyledSearchButton></StyledSearchButton>
                             </StyledSearchWrapper> */}
-                            <AuthorContainer>
+                            <AuthorContainer style={{marginTop:"0px"}}>
                                 <TopHeading>
                                     <LeftHeading>
                                         <SpanTitle>Author <br></br></SpanTitle>
@@ -91,6 +95,7 @@ export default class RecipePage extends Component {
                         </RightContainer>
                     </OuterContainer>
                 </ContainerWrapper>
+                </>
         )
     }
 }

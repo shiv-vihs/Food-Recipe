@@ -20,12 +20,12 @@ class header extends Component {
                 dropDown =
                 <>
                     <DropDownContainer>
-                        <Heading to="/home">Home</Heading>
-                        <Heading >Recipes</Heading>
-                        <Link style={{textDecoration:"none"}}to={"/0"}><SubHeading>Browse Recipes</SubHeading></Link>
-                        <Link style={{textDecoration:"none"}}to={"/0"}><SubHeading>Recipe Page #1</SubHeading></Link>
-                        <Heading to="/contact-page" >Contact Us</Heading>
-                        <Heading to="/submit-recipe" >Submit Recipe</Heading>
+                        <Heading onClick={this.props.dropDownState} to="/home">Home</Heading>
+                        <Heading onClick={this.props.dropDownState}>Recipes</Heading>
+                        <Link onClick={this.props.dropDownState} style={{textDecoration:"none"}}to={"/0"}><SubHeading>Browse Recipes</SubHeading></Link>
+                        <Link onClick={this.props.dropDownState} style={{textDecoration:"none"}}to={"/0"}><SubHeading>Recipe Page #1</SubHeading></Link>
+                        <Heading onClick={this.props.dropDownState} to="/contact-page" >Contact Us</Heading>
+                        <Heading onClick={this.props.dropDownState} to="/submit-recipe" >Submit Recipe</Heading>
                         <StyledLogout onClick={this.props.logoutHandler}>Logout</StyledLogout>
     
                     </DropDownContainer>
@@ -81,7 +81,7 @@ const mapStateToProps= state =>{
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        dropDownState: ()=> dispatch({type:'DROP_DOWN_STATE'}),
+        dropDownState: ()=> dispatch({type:'DROP_DOWN_STATE'})
         
     };
 }

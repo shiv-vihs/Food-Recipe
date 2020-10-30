@@ -4,7 +4,6 @@ export const CardContainer= styled.div`
 width:100%;
 height:auto;
 background-color:#f2f2f2;
-
 `
 export const DishTitle= styled.div`
 width:100%;

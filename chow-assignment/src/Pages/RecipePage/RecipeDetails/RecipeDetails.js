@@ -27,6 +27,7 @@ export default class RecipeDetails extends Component {
                     starrender = <><div><YellowStar className="fa fa-star" aria-hidden="true"></YellowStar><YellowStar className="fa fa-star" aria-hidden="true"></YellowStar><YellowStar className="fa fa-star" aria-hidden="true"></YellowStar><YellowStar className="fa fa-star" aria-hidden="true"></YellowStar><YellowStar className="fa fa-star" aria-hidden="true"></YellowStar></div></>;
                 temp =
                     <RecipeContainer>
+                        
                         <CardContainer>
                             <DishTitle>{this.props.recipelist[key].name}</DishTitle>
                             <Stars>{starrender}</Stars>
@@ -38,6 +39,7 @@ export default class RecipeDetails extends Component {
                                 <Detail><span style={{ fontWeight: 400 }}>Calories:</span><br></br> {this.props.recipelist[key].calories}</Detail>
                             </FoodDetails>
                         </CardContainer>
+                       
                         <Description>{this.props.recipelist[key].description}</Description>
                         <IngredientsHeading>Ingredients</IngredientsHeading>
                         <IngredientsUl>
@@ -92,6 +94,7 @@ export default class RecipeDetails extends Component {
                                 Bring to a boil and reduce heat. Simmer, partially covered, for 2 1/2 hours or until meat is tender.
                             </DirectionsLi>
                         </DirectionsOl>
+                        
                     </RecipeContainer>
 
             }
