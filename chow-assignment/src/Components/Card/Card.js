@@ -23,7 +23,6 @@ export default function Card(props) {
         <>
             <CardContainer>
                 <CardImageWrapper background={photo}>
-                    {console.log(props.keyselected)}
                 <NavLink to={"/"+props.keyselected}><ViewRecipe>View Recipe</ViewRecipe></NavLink>
                 </CardImageWrapper>
                 <Details>

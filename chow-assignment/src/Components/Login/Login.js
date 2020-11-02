@@ -11,7 +11,9 @@ export default class Login extends Component {
         errors: {},
         success:null
     }
-    
+    componentDidMount(){
+        window.scrollTo(0,0);
+    }
     onChangeEmail = (e) => {
         this.setState({ email: e.target.value });
     }

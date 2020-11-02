@@ -4,7 +4,7 @@ import Featured from "../../Components/Featured/Featured"
 import AuthorPhoto from "../../Assets/author-photo.png"
 import Button from "../../Components/Button/Button"
 import Banner from "../../Components/Banner/Banner"
-import axios from 'axios'
+import * as actions from "../../Store/actions"
 
 import {
     OuterContainer,
@@ -37,21 +37,15 @@ import Slider01 from "../../Assets/sliderA_01.jpg"
 import Slider02 from "../../Assets/sliderA_02.jpg"
 import Slider03 from "../../Assets/sliderA_03.jpg"
 import Slider04 from "../../Assets/sliderA_04.jpg"
-export default class Body extends Component {
-    componentDidMount() {
-        
-        axios.get('https://foodrecipejson.firebaseio.com/.json')
-            .then(response => {
-                const transformedData = response.data.RecipeList;
-                this.setState({ RecipeList: transformedData });
+import { connect } from 'react-redux'
 
-                console.log(this.state.RecipeList);
-                //console.log(response.data);
-            });
+class Body extends Component {
+    componentDidMount() {
+            this.props.onInitRecipeList();
             window.scrollTo(0,0);
     }
     state = {
-        RecipeList: {},
+        
         searchcontent:null,
         popular: [{picture:Featured01,name:"Chocolate Cake And Green Tea Cream", rating:"5",key:5}, {picture:Featured02,name:"Mexican Grilled Corn Recipe", rating:"5",key:0}, {picture:Featured03, name:"Pollo Barracho With Homemade Tortillas",rating:"5", key:7}],
         covers: [{
@@ -114,9 +108,9 @@ export default class Body extends Component {
             //         console.log(this.state.RecipeList[key].name)
             //     }
             // }
-           cardDisplay= Object.keys(this.state.RecipeList).filter((keyname) => this.state.RecipeList[keyname].name.toLowerCase().includes(this.state.searchcontent.toLowerCase()) ).map((filteredIndex)=>{
-            return <Card source={this.state.RecipeList[filteredIndex].image}
-                selectedrecipe={this.state.RecipeList[filteredIndex]} keyselected={filteredIndex}
+           cardDisplay= Object.keys(this.props.RecList).filter((keyname) => this.props.RecList[keyname].name.toLowerCase().includes(this.state.searchcontent.toLowerCase()) ).map((filteredIndex)=>{
+            return <Card source={this.props.RecList[filteredIndex].image}
+                selectedrecipe={this.props.RecList[filteredIndex]} keyselected={filteredIndex}
                  />;
         })
 
@@ -124,10 +118,9 @@ export default class Body extends Component {
 
         }
         else{
-            cardDisplay= Object.keys(this.state.RecipeList).map((keyname) => {
-                console.log(keyname);
-                return <Card source={this.state.RecipeList[keyname].image}
-                    selectedrecipe={this.state.RecipeList[keyname]} keyselected={keyname}
+            cardDisplay= Object.keys(this.props.RecList).map((keyname) => {
+                return <Card source={this.props.RecList[keyname].image}
+                    selectedrecipe={this.props.RecList[keyname]} keyselected={keyname}
                      />;
             });
         }
@@ -206,3 +199,16 @@ export default class Body extends Component {
         )
     }
 }
+
+const mapStateToProps= state =>{
+    return{
+        RecList:state.RecipeList
+    };
+};
+const mapDispatchToProps= dispatch =>{
+    return{
+        onInitRecipeList: ()=> dispatch(actions.initRecipeList())
+    };
+    
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Body);

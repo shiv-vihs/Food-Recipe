@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Featured from "../../Components/Featured/Featured"
 import RecipeDetails from "./RecipeDetails/RecipeDetails"
-import axios from 'axios'
 import AuthorPhoto from "../../Assets/author-photo.png"
 import Featured01 from "../../Assets/featuredRecipe-01.jpg"
 import Featured02 from "../../Assets/featuredRecipe-02.jpg"
@@ -26,25 +25,17 @@ import {
     ContainerWrapper,
 } from "../Body/styles"
 import { RecipeBackground, Wrapper } from './styles'
-export default class RecipePage extends Component {
+import {connect} from "react-redux"
+class RecipePage extends Component {
     componentDidMount() {
-        axios.get('https://foodrecipejson.firebaseio.com/.json')
-            .then(response => {
-                const transformedData = response.data.RecipeList;
-                this.setState({ RecipeList: transformedData });
-
-                 //console.log(this.state.RecipeList);
-                //console.log(response.data);
-            });
             window.scrollTo(0,0);
     }
     state={
-        RecipeList: {},
         popular: [{picture:Featured01,name:"Chocolate Cake And Green Tea Cream", rating:"5",key:5}, {picture:Featured02,name:"Mexican Grilled Corn Recipe", rating:"5",key:0}, {picture:Featured03, name:"Pollo Barracho With Homemade Tortillas",rating:"5", key:7}]
     };
     render() {
         let leftContainer;
-        leftContainer = <RecipeDetails recipelist={this.state.RecipeList} cardselected={this.props.match.params.id}></RecipeDetails>
+        leftContainer = <RecipeDetails recipelist={this.props.RecList} cardselected={this.props.match.params.id}></RecipeDetails>
 
         //console.log("Inside recipe page");
         return (
@@ -99,3 +90,9 @@ export default class RecipePage extends Component {
         )
     }
 }
+const mapStateToProps= state =>{
+    return{
+        RecList:state.RecipeList
+    };
+};
+export default connect(mapStateToProps)(RecipePage);

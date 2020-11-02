@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import { SubmitRecipeHeading, HeadingPara, SubmitRecipeHeadingWrapper, SubmitRecipeBody, SubHeadingTitle, FormInput, SubmitButton } from "./styles"
-
-export default class SubmitRecipe extends Component {
+import {connect} from "react-redux"
+class SubmitRecipe extends Component {
     state = {
-        RecipeList:{},
         recipeName: null,
         prepTime: null,
         cookTime: null,
@@ -21,16 +20,7 @@ export default class SubmitRecipe extends Component {
     }
     componentDidMount() {
         
-        axios.get('https://foodrecipejson.firebaseio.com/.json')
-            .then(response => {
-                const transformedData = response.data.RecipeList;
-                this.setState({ RecipeList: transformedData });
-
-                console.log(this.state.RecipeList);
-                
-                //console.log(count);
-                
-            });
+        window.scrollTo(0,0);
     }
     recipename = (event) => {
         this.setState({ recipeName: event.target.value });
@@ -139,7 +129,7 @@ export default class SubmitRecipe extends Component {
        if(formIsValid){ 
 
          let count=0;
-         for(let key in this.state.RecipeList){
+         for(let key in this.props.RecList){
              ++count;
          }
          count=count+1;
@@ -211,3 +201,9 @@ export default class SubmitRecipe extends Component {
         )
     }
 }
+const mapStateToProps= state =>{
+    return{
+        RecList:state.RecipeList
+    };
+};
+export default connect(mapStateToProps)(SubmitRecipe);
