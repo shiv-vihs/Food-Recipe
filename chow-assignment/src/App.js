@@ -13,13 +13,28 @@ import ContactPage from "./Pages/ContactPage/ContactPage"
 import ColorSwitcher from "./Components/ColorSwitcher/ColorSwitcher"
 import { ThemeProvider } from "styled-components"
 import { theme } from "./Themes"
+
+// const MyContext= React.createContext();
+
+// class MyProvider extends Component{
+//   state={enteredEmail:''}
+//   render(){
+//     return(
+//       <MyContext.Provider value={{state:this.state, setLoginEmail:(emailEntered)=>this.setState({enteredEmail:emailEntered})}}>
+//         {this.props.children}
+//       </MyContext.Provider>
+//     )
+//   }
+// }
+
 export default class App extends Component {
   state = {
     isLoggedIn: false,
     themeSelected: theme.colors.chowDefault
   }
-  loginCheck = (em) => {
+  loginCheck = (em, email) => {
     this.setState({ isLoggedIn: em });
+    console.log(email);
   }
 
   themeChange = (newTheme) => {
@@ -29,13 +44,13 @@ export default class App extends Component {
     this.setState({isLoggedIn: false});
   }
   render() {
-
     let screen;
      if (this.state.isLoggedIn === false)
        screen = <LoginSignup loginCheck={this.loginCheck} />
      else
     screen =
       <>
+      
         <Header logoutHandler={this.logoutHandler}/>
         <Switch>
           <Route path="/" exact component={Body} />
@@ -46,17 +61,21 @@ export default class App extends Component {
 
         </Switch>
         <Footer />
+        
       </>
     return (
-      <>
+      
+      //<MyProvider>
         <ThemeProvider theme={this.state.themeSelected}>
           <Wrapper>
             <ColorSwitcher themeSelector={this.themeChange} />
+            
             {screen}
+            
           </Wrapper>
         </ThemeProvider>
-
-      </>
+        //</MyProvider>
+      
     )
   }
 }

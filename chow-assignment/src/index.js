@@ -15,14 +15,13 @@ const sagaMiddleware = createSagaMiddleware();
 const store= createStore(reducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watch);
 
-
 ReactDOM.render(
     <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter> 
     <App />
     </BrowserRouter>
     </Provider>
-    
+
     ,
   document.getElementById('root')
 );

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Error} from "../../Pages/LoginSignup/styles"
 import { StyledSignup, FieldHeading, StyledTextField, LoginPageButtons, Selected, Unselected } from "../../Pages/LoginSignup/styles"
 import axios from "axios"
+//const MyContext= React.createContext();
 export default class Login extends Component {
     state = {
         email: null,
@@ -12,7 +13,7 @@ export default class Login extends Component {
         success:null
     }
     componentDidMount(){
-        window.scrollTo(0,0);
+        window.scrollTo({top:0, left:0, behavior:'smooth'});
     }
     onChangeEmail = (e) => {
         this.setState({ email: e.target.value });
@@ -56,7 +57,7 @@ export default class Login extends Component {
                 console.log(response);
                 if(response.status == 200){
                     this.setState({success:"Successfully Logged In. Press Log In button again to continue"});
-                    this.setState({errlogin:null});
+                    this.setState({errlogin:null});                  
                 }
             }).catch((error)=>{
             
@@ -67,7 +68,7 @@ export default class Login extends Component {
          if(this.state.UserData.status === 200){
              isSuccessful= true;
          }
-        this.props.Check(isSuccessful);
+        this.props.Check(isSuccessful, this.state.email);
        }
     }
     render() {
@@ -80,13 +81,17 @@ export default class Login extends Component {
                 <FieldHeading >E-mail</FieldHeading>
                 <span style={{color: "red"}}>{this.state.errors["email"]}</span>
                 <StyledTextField onChange={(event) => { this.onChangeEmail(event) }} placeholder="E-mail" />
-
+                {/* <MyContext.Consumer>
+                {(context)=>(console.log(context.state.enteredEmail))}
+                </MyContext.Consumer> */}
                 <FieldHeading >Password</FieldHeading>
                 <StyledTextField type="password" onChange={(event) => { this.onChangePass(event) }} placeholder="Password" />
+                
                 <LoginPageButtons>
                     <Selected onClick={this.equalCheck} >Log In</Selected>
                     <Unselected onClick={() => this.props.changeToS()}>Sign Up</Unselected>
                 </LoginPageButtons>
+                
             </>
         )
     }

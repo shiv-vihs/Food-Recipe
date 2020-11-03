@@ -15,6 +15,7 @@ class LoginSignup extends Component {
         else {
             displayOutput =
                 <Login Check={this.props.loginCheck} changeToS={this.props.changeToSignUp}/>
+                
 
         }
         return (
@@ -24,7 +25,9 @@ class LoginSignup extends Component {
                         <img src={LoginBackground} width="100%" />
                     </LoginLeft>
                     <LoginRight>
+                    
                         {displayOutput}
+                    
                     </LoginRight>
                 </LoginContainer>
 

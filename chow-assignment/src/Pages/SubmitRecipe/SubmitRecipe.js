@@ -14,13 +14,12 @@ class SubmitRecipe extends Component {
         ratings: null,
         descrip: null,
         errors: {},
-        success:null,
-        errormsg:null
+        success:null
        
     }
     componentDidMount() {
         
-        window.scrollTo(0,0);
+        window.scrollTo({top:0,left:0, behavior:'smooth'});
     }
     recipename = (event) => {
         this.setState({ recipeName: event.target.value });
@@ -152,10 +151,10 @@ class SubmitRecipe extends Component {
                 console.log(response);
                 if(response.status==200){
                 this.setState({success:"Successfully Submitted! Click Home to view the recipe added"});
-                this.setState({errormsg:null});
+                window.scrollTo({top:0,left:0, behavior:'smooth'});
                 }
             });
-    }
+        }
     }
     render() {
         return (
@@ -166,7 +165,7 @@ class SubmitRecipe extends Component {
                     </SubmitRecipeHeadingWrapper>
                 </SubmitRecipeHeading>
                 <SubmitRecipeBody>
-                
+                <p style={{color:"green"}}>{this.state.success}</p>
                     <SubHeadingTitle >Recipe Name</SubHeadingTitle>
                     <span style={{color: "red"}}>{this.state.errors["recipeName"]}</span>
                     <FormInput onChange={(event) => this.recipename(event)} />
@@ -194,8 +193,7 @@ class SubmitRecipe extends Component {
                     <SubHeadingTitle>Description</SubHeadingTitle>
                     <span style={{color: "red"}}>{this.state.errors["descrip"]}</span>
                     <FormInput onChange={(event) => this.recipedescription(event)} />
-                    <SubmitButton onClick={this.submitRecipeHandler}>Submit Recipe</SubmitButton>
-                    <p style={{color:"green"}}>{this.state.success}</p>
+                    <SubmitButton onClick={this.submitRecipeHandler}>Submit Recipe</SubmitButton>                  
                 </SubmitRecipeBody>
             </div>
         )

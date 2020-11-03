@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { StyledButton, ShareContainer,Facebook,Twitter,GooglePlus, StyledSearch, FieldHeading, FormHeading, SpanHeading, Heading, Contact, ImageDiv, OuterContainer, LeftContainer, RightContainer } from "./styles"
 import ContactPhoto from "../../Assets/contact.jpg"
+//const MyContext= React.createContext();
 const ContactPage=()=> {
     const [name, nameChange]=useState('');
     const [email,emailChange]=useState('');
@@ -10,10 +11,9 @@ const ContactPage=()=> {
     const [success,successChange]=useState('');
 
     useEffect(()=>{
-        window.scrollTo(0,0);
+        window.scrollTo({top:0,left:0, behavior:'smooth'});
     },[]);
     const clickHandler=()=>{
-        //let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
 
@@ -59,10 +59,10 @@ const ContactPage=()=> {
                 console.log(response);
                 if(response.status==200){
                     successChange("Successfully submitted details");
+                    window.scrollTo({top:250, left:0, behavior:'smooth'});
                 
                 }
-            });
-           
+            });                       
        }
 
     }
@@ -78,18 +78,23 @@ const ContactPage=()=> {
                 <OuterContainer>
                     <LeftContainer>
                         <SpanHeading><FormHeading>Contact Form</FormHeading></SpanHeading>
+                        <p style={{color:"green"}}>{success}</p>
                         <FieldHeading>Name:</FieldHeading>
                         <span style={{color: "red"}}>{errors["name"]}</span>
                         <StyledSearch onChange={event=>nameChange(event.target.value)}/>
                         
                         <FieldHeading>Email:</FieldHeading>
                         <span style={{color: "red"}}>{errors["email"]}</span>
-                        <StyledSearch onChange={(event)=>emailChange(event.target.value)} />
+                        <StyledSearch onChange={event=>emailChange(event.target.value)} />
+                        {/* <MyContext.Consumer>
+                            {(value)=>(
+                                <StyledSearch value={value.state.enteredEmail} />
+                            )}
                         
+                        </MyContext.Consumer> */}
                         <FieldHeading>Message:</FieldHeading>
                         <StyledSearch onChange={(event)=>messageChange(event.target.value)}/>
                         <StyledButton onClick={()=>clickHandler()}>SEND MESSAGE</StyledButton>
-                        <p style={{color:"green"}}>{success}</p>
                     </LeftContainer>
                     <RightContainer>
                         <ShareContainer>
