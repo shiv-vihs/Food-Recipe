@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { YellowStar, Stars, CardContainer, DishTitle, FoodDetails, Detail, RecipeContainer, DirectionsOl, DirectionsLi, Description, Label, IngredientsHeading, IngredientsLi, Input, IngredientsUl } from "./styles"
-import { SliderImage } from '../../Body/styles'
+import { SliderImage } from '../../Home/styles'
 import RecipePhoto from "../../../Assets/recipePhoto-01.jpg"
 
 export default class RecipeDetails extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SliderImage } from '../../Pages/Body/styles'
+import { SliderImage } from '../../Pages/Home/styles'
 import { AlphaWrapper,ViewRecipe, NavLink ,FoodContent, DishHeading, DishTag, SubHeading, SubheadingSpan } from "./style"
 
 export default class Banner extends Component {

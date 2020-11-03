@@ -1,4 +1,4 @@
 export {
     setRecipeList,
     initRecipeList
-} from "./body";
+} from "./home";

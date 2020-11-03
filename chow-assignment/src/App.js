@@ -4,7 +4,7 @@ import './App.css';
 import { Wrapper } from "./AppStyle"
 import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer"
-import Body from "./Pages/Body/Body"
+import Body from "./Pages/Home/Home"
 import LoginSignup from "./Pages/LoginSignup/LoginSignup"
 import SubmitRecipe from "./Pages/SubmitRecipe/SubmitRecipe"
 import RecipePage from "./Pages/RecipePage/RecipePage"

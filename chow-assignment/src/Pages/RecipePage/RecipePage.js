@@ -23,7 +23,7 @@ import {
     Facebook,
     Twitter, GooglePlus,
     ContainerWrapper,
-} from "../Body/styles"
+} from "../Home/styles"
 import { RecipeBackground, Wrapper } from './styles'
 import {connect} from "react-redux"
 class RecipePage extends Component {
