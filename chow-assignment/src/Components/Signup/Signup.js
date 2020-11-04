@@ -51,6 +51,12 @@ export default class Signup extends Component {
             }
        }  
 
+       if(this.state.password != this.state.repeatPassword){
+           formIsValid=false;
+           errors["password"]= "Check if Password and Repeat Password are equal";
+        // this.setState({errormsg: "Check if Password and Repeat Password are equal"});
+       }
+
        this.setState({errors: errors});
        console.log(formIsValid)
        if(formIsValid){
@@ -66,7 +72,7 @@ export default class Signup extends Component {
         ).catch((error)=>{
             
             //console.log({error});
-            this.setState({errormsg: "Check if Password and Repeat Password are equal and minimum of length 6"});
+            this.setState({errormsg: "Check if Password and Repeat Password are minimum of length 6"});
             
         })
     }
@@ -85,6 +91,7 @@ export default class Signup extends Component {
             <FieldHeading>Username</FieldHeading>
             <StyledTextField onChange={(event)=>this.userNameChange(event)} placeholder="Username"/>
             <FieldHeading>Password</FieldHeading>
+            <span style={{color: "red"}}>{this.state.errors["password"]}</span>
             <StyledTextField type="password" onChange={(event)=>this.passwordChange(event)} placeholder="Password"/>
             <FieldHeading>Repeat Password</FieldHeading>
             <StyledTextField type="password" onChange={(event)=>this.repeatPasswordChange(event)} placeholder="Repeat Password"/>
