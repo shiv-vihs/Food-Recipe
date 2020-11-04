@@ -6,7 +6,7 @@ height: auto;
 //background-color:purple;
 margin-right:3%;
 margin-bottom:3%;
-
+transition-duration:300ms;
 @media only screen and (max-width: 990px){
     width:48%;
     margin-right:2%;

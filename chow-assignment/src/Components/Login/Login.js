@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import {Error} from "../../Pages/LoginSignup/styles"
 import { StyledSignup, FieldHeading, StyledTextField, LoginPageButtons, Selected, Unselected } from "../../Pages/LoginSignup/styles"
 import axios from "axios"
+import {withRouter} from "react-router-dom"
 //const MyContext= React.createContext();
-export default class Login extends Component {
+class Login extends Component {
     state = {
         email: null,
         pass: null,
@@ -57,7 +58,10 @@ export default class Login extends Component {
                 console.log(response);
                 if(response.status == 200){
                     this.setState({success:"Successfully Logged In. Press Log In button again to continue"});
-                    this.setState({errlogin:null});                  
+                    this.setState({errlogin:null});  
+                    console.log(response);
+                    localStorage.setItem('activeId',response.data.idToken); 
+                    this.props.history.push('/home');  
                 }
             }).catch((error)=>{
             
@@ -72,7 +76,6 @@ export default class Login extends Component {
        }
     }
     render() {
-        
         return (
             <>
                 <StyledSignup>Log In</StyledSignup>
@@ -91,8 +94,8 @@ export default class Login extends Component {
                     <Selected onClick={this.equalCheck} >Log In</Selected>
                     <Unselected onClick={() => this.props.changeToS()}>Sign Up</Unselected>
                 </LoginPageButtons>
-                
             </>
         )
     }
 }
+export default withRouter(Login);

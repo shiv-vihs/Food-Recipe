@@ -165,6 +165,7 @@ export const DropDownContainer=styled.div`
 position:absolute;
 z-index:100;
 width:100%;
+
 `
 export const Heading=styled(Link)`
 width:100%;
@@ -175,6 +176,7 @@ padding:12px 20px;
 display:block;
 background-color:#f0f0f0;
 color:#808080;
+transition-duration:300ms;
 &:hover{
     color: white;
     background-color: #c0c0c0;

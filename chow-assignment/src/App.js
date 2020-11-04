@@ -13,7 +13,7 @@ import ContactPage from "./Pages/ContactPage/ContactPage"
 import ColorSwitcher from "./Components/ColorSwitcher/ColorSwitcher"
 import { ThemeProvider } from "styled-components"
 import { theme } from "./Themes"
-
+import {withRouter} from "react-router-dom"
 // const MyContext= React.createContext();
 
 // class MyProvider extends Component{
@@ -27,7 +27,7 @@ import { theme } from "./Themes"
 //   }
 // }
 
-export default class App extends Component {
+class App extends Component {
   state = {
     isLoggedIn: false,
     themeSelected: theme.colors.chowDefault
@@ -42,16 +42,18 @@ export default class App extends Component {
   }
   logoutHandler=()=>{
     this.setState({isLoggedIn: false});
+    localStorage.removeItem('activeId');
   }
   render() {
     let screen;
-     if (this.state.isLoggedIn === false)
+     if (!localStorage.getItem('activeId') )
        screen = <LoginSignup loginCheck={this.loginCheck} />
-     else
+     else if(localStorage.getItem('activeId'))
     screen =
       <>
       
         <Header logoutHandler={this.logoutHandler}/>
+        
         <Switch>
           <Route path="/" exact component={Body} />
           <Route path="/home" exact component={Body} />
@@ -60,6 +62,7 @@ export default class App extends Component {
           <Route path="/:id" exact component={RecipePage} />
 
         </Switch>
+        
         <Footer />
         
       </>
@@ -79,4 +82,4 @@ export default class App extends Component {
     )
   }
 }
-
+export default withRouter(App);

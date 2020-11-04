@@ -28,7 +28,10 @@ import { RecipeBackground, Wrapper } from './styles'
 import {connect} from "react-redux"
 class RecipePage extends Component {
     componentDidMount() {
-            window.scrollTo({top:250,left:0, behavior:'smooth'});
+        if(window.innerWidth <= 767)
+            window.scrollTo({top:110,left:0, behavior:'smooth'});
+            else
+            window.scrollTo({top:260,left:0, behavior:'smooth'});
     }
     state={
         popular: [{picture:Featured01,name:"Chocolate Cake And Green Tea Cream", rating:"5",key:5}, {picture:Featured02,name:"Mexican Grilled Corn Recipe", rating:"5",key:0}, {picture:Featured03, name:"Pollo Barracho With Homemade Tortillas",rating:"5", key:7}]

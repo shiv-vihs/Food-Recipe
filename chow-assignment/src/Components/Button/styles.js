@@ -24,6 +24,7 @@ align-items:center;
 justify-content:center;
 text-align:center;
 background-color:${props=>props.theme.color};
+transition-duration:500ms;
 font-family:OpenSans;
 line-height:18px;
 font-size:14px;

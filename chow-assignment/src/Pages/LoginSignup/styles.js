@@ -38,7 +38,7 @@ padding: 15px 0;
 border:none;
 outline:none;
 font-size:16px;
-border-bottom: 1px solid rgb(141, 198, 63);
+border-bottom: 1px solid ${props=>props.theme.color};
 `
 
 export const LoginPageButtons = styled.div`
@@ -54,7 +54,7 @@ font-family:Arial;
 font-size:15px;
 font-weight:600;
 color:white;
-background-color:rgb(141, 198, 63);
+background-color:${props=>props.theme.color};
 border-radius:15px;
 border:none;
 cursor:pointer;
@@ -75,7 +75,7 @@ border-radius:15px;
 border:none;
 &:hover{
     color:white;
-    background-color:rgb(141, 198, 63);
+    background-color:${props=>props.theme.color};
 }
 `
 

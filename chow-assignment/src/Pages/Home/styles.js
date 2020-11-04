@@ -210,7 +210,7 @@ width:100%;
 height:400px;
 display:flex;
 align-items:center;
-
+transition-duration:500ms;
 background-attachment: scroll;
 background-position: center;
 background-repeat: no-repeat;
@@ -218,6 +218,7 @@ background-size: cover;
 background-image: url(${({ background }) => background});
 
 @media only screen and (max-width:767px){
+    transition-duration:0ms;
     margin-bottom:20px;
 }
 `

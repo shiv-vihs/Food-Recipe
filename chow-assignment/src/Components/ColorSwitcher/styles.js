@@ -8,6 +8,7 @@ background-color:#333;
 position:fixed;
 top:80px;
 left:-150px;
+transition-duration: 500ms;
 visibility:visibility;
 &:hover {
     left:0;

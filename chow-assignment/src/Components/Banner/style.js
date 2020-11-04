@@ -5,18 +5,22 @@ export const FoodContent=styled.div`
 width:960px;
 margin: 0 auto;
 height:auto;
+transition-duration:500ms;
 @media only screen and (max-width:960px){
     //max-width:768px;
     max-width:786px;
+    
 }
 @media only screen and (max-width:767px){
     //max-width:768px;
     max-width:480px;
     
+    
 }
 @media only screen and (max-width:480px){
     //max-width:768px;
     max-width:320px;  
+    
 }
 `
 export const DishHeading= styled.p`
@@ -26,8 +30,10 @@ color:white;
 width:50%;
 margin:0;
 margin-top:24px;
+transition-duration:500ms;
 @media only screen and (max-width:787px){
     //max-width:768px;
+    
     width:100%;
     font-size:32px;
 }
@@ -38,12 +44,14 @@ font-size:13px;
 color:white;
 background-color:${props=>props.theme.color};
 padding: 5px;
+transition-duration:500ms;
 `
 
 export const SubHeading= styled.div`
 display:flex;
 width: 50%;
 margin-top:24px;
+transition-duration:500ms;
 `
 export const SubheadingSpan= styled.span`
 font-size:13px;
@@ -52,11 +60,12 @@ margin-right:30px;
 line-height:18px;
 font-weight:700;
 color:white;
+transition-duration:500ms;
 `
 export const NavLink=styled(Link)`
 text-decoration:none;
 margin-top:32px;
-
+transition-duration:500ms;
 `
 export const ViewRecipe=styled.div`
 border: 3px solid white;
@@ -69,6 +78,7 @@ font-weight:700;
 padding:10px 10px;
 font-family:OpenSans;
 //opacity:50%;
+transition-duration:500ms;
 `
 
 export const AlphaWrapper=styled.div`
@@ -77,4 +87,5 @@ height:400px;
 display:flex;
 align-items:center;
 background-color:rgba(51,51,51,0.5);
+transition-duration:500ms;
 `
