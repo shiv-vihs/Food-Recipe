@@ -18,6 +18,7 @@ import {
   RightContainer,
 } from "./styles";
 import ContactPhoto from "../../Assets/contact.jpg";
+import { MyContext } from "../../Context/context";
 //const MyContext= React.createContext();
 const ContactPage = () => {
   const [name, nameChange] = useState("");
@@ -110,13 +111,17 @@ const ContactPage = () => {
 
           <FieldHeading>Email:</FieldHeading>
           <span style={{ color: "red" }}>{errors["email"]}</span>
-          <StyledSearch onChange={(event) => emailChange(event.target.value)} />
-          {/* <MyContext.Consumer>
-                            {(value)=>(
-                                <StyledSearch value={value.state.enteredEmail} />
-                            )}
-                        
-                        </MyContext.Consumer> */}
+
+          <MyContext.Consumer>
+            {(context) => (
+              <>
+                <StyledSearch
+                  onChange={(event) => emailChange(event.target.value)}
+                  value={context.state.enteredEmail}
+                />
+              </>
+            )}
+          </MyContext.Consumer>
           <FieldHeading>Message:</FieldHeading>
           <StyledSearch
             onChange={(event) => messageChange(event.target.value)}

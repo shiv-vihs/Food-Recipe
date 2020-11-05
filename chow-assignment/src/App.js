@@ -14,6 +14,7 @@ import ColorSwitcher from "./Components/ColorSwitcher/ColorSwitcher";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./Themes";
 import { withRouter } from "react-router-dom";
+import MyProvider from "./Context/context";
 // const MyContext= React.createContext();
 
 // class MyProvider extends Component{
@@ -34,7 +35,6 @@ class App extends Component {
   };
   loginCheck = (em, email) => {
     this.setState({ isLoggedIn: em });
-    console.log(email);
   };
 
   themeChange = (newTheme) => {
@@ -65,15 +65,15 @@ class App extends Component {
         </>
       );
     return (
-      //<MyProvider>
-      <ThemeProvider theme={this.state.themeSelected}>
-        <Wrapper>
-          <ColorSwitcher themeSelector={this.themeChange} />
+      <MyProvider>
+        <ThemeProvider theme={this.state.themeSelected}>
+          <Wrapper>
+            <ColorSwitcher themeSelector={this.themeChange} />
 
-          {screen}
-        </Wrapper>
-      </ThemeProvider>
-      //</MyProvider>
+            {screen}
+          </Wrapper>
+        </ThemeProvider>
+      </MyProvider>
     );
   }
 }

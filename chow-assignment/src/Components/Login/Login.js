@@ -9,7 +9,7 @@ import {
 } from "../../Pages/LoginSignup/styles";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-//const MyContext= React.createContext();
+import { MyContext } from "../../Context/context";
 class Login extends Component {
   state = {
     email: null,
@@ -37,7 +37,6 @@ class Login extends Component {
       formIsValid = false;
       errors["email"] = "Field cannot be empty";
     } else {
-      console.log("Inside");
       let lastAtPos = this.state.email.lastIndexOf("@");
       let lastDotPos = this.state.email.lastIndexOf(".");
 
@@ -55,7 +54,7 @@ class Login extends Component {
     }
 
     this.setState({ errors: errors });
-    console.log(formIsValid);
+
     if (formIsValid) {
       let postData = {
         email: this.state.email,
@@ -69,16 +68,17 @@ class Login extends Component {
         )
         .then((response) => {
           this.setState({ UserData: response });
-          console.log(response);
+          //console.log(response);
           if (response.status == 200) {
             this.setState({
               success:
                 "Successfully Logged In. Press Log In button again to continue",
             });
             this.setState({ errlogin: null });
-            console.log(response);
+
             localStorage.setItem("activeId", response.data.idToken);
             this.props.history.push("/home");
+            console.log(this.context.state.emailEntered);
           }
         })
         .catch((error) => {
@@ -95,37 +95,44 @@ class Login extends Component {
   };
   render() {
     return (
-      <>
-        <StyledSignup>Log In</StyledSignup>
-        <span style={{ color: "red" }}>{this.state.errlogin}</span>
-        <p style={{ color: "green" }}>{this.state.success}</p>
-        <FieldHeading>E-mail</FieldHeading>
-        <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
-        <StyledTextField
-          onChange={(event) => {
-            this.onChangeEmail(event);
-          }}
-          placeholder="E-mail"
-        />
-        {/* <MyContext.Consumer>
-                {(context)=>(console.log(context.state.enteredEmail))}
-                </MyContext.Consumer> */}
-        <FieldHeading>Password</FieldHeading>
-        <StyledTextField
-          type="password"
-          onChange={(event) => {
-            this.onChangePass(event);
-          }}
-          placeholder="Password"
-        />
-
-        <LoginPageButtons>
-          <Selected onClick={this.equalCheck}>Log In</Selected>
-          <Unselected onClick={() => this.props.changeToS()}>
-            Sign Up
-          </Unselected>
-        </LoginPageButtons>
-      </>
+      <MyContext.Consumer>
+        {(context) => (
+          <>
+            <StyledSignup>Log In</StyledSignup>
+            <span style={{ color: "red" }}>{this.state.errlogin}</span>
+            <p style={{ color: "green" }}>{this.state.success}</p>
+            <FieldHeading>E-mail</FieldHeading>
+            <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
+            <StyledTextField
+              onChange={(event) => {
+                this.onChangeEmail(event);
+              }}
+              placeholder="E-mail"
+            />
+            <FieldHeading>Password</FieldHeading>
+            <StyledTextField
+              type="password"
+              onChange={(event) => {
+                this.onChangePass(event);
+              }}
+              placeholder="Password"
+            />
+            <LoginPageButtons>
+              <Selected
+                onClick={() => {
+                  this.equalCheck();
+                  context.setLoginEmail(this.state.email);
+                }}
+              >
+                Log In
+              </Selected>
+              <Unselected onClick={() => this.props.changeToS()}>
+                Sign Up
+              </Unselected>
+            </LoginPageButtons>
+          </>
+        )}
+      </MyContext.Consumer>
     );
   }
 }
