@@ -10,7 +10,6 @@ import {
   OuterContainer,
   LeftContainer,
   RightContainer,
-  // StyledSearchButton,
   StyledSearch,
   StyledSearchWrapper,
   AuthorContainer,
@@ -117,7 +116,6 @@ class Body extends Component {
   };
 
   render() {
-    const isSelected = this.state.selected;
     let renderImage;
     let cardDisplay;
     if (this.state.searchcontent) {
@@ -152,18 +150,18 @@ class Body extends Component {
         );
       });
     }
-    if (isSelected) {
+    if (this.state.selected) {
       renderImage = (
         <Banner
-          index={isSelected}
-          background={this.state.covers[isSelected].source}
-          attributes={this.state.covers[isSelected]}
+          index={this.state.selected}
+          background={this.state.covers[this.state.selected].source}
+          attributes={this.state.covers[this.state.selected]}
         />
       );
     } else {
       renderImage = (
         <Banner
-          index={isSelected}
+          index={this.state.selected}
           background={this.state.covers[0].source}
           attributes={this.state.covers[0]}
         />

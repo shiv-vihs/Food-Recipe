@@ -18,66 +18,26 @@ export default function Card(props) {
   var starrender;
   let stars = props.selectedrecipe.rating;
 
-  if (stars === "1")
-    starrender = (
-      <>
-        <div>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
-      </>
+  //setting stars
+  let starsArray = [];
+  for (let i = 0; i < stars; i++) {
+    starsArray.push(
+      <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
     );
-  if (stars === "2")
-    starrender = (
-      <>
-        <div>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>{" "}
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
-      </>
+  }
+  for (let i = 0; i < 5 - stars; i++) {
+    starsArray.push(
+      <i
+        style={{ color: "#ccc" }}
+        className="fa fa-star"
+        aria-hidden="true"
+      ></i>
     );
-  if (stars === "3")
-    starrender = (
-      <>
-        <div>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
-      </>
-    );
-  if (stars === "4")
-    starrender = (
-      <>
-        <div>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
-      </>
-    );
-  if (stars === "5")
-    starrender = (
-      <>
-        <div>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-          <YellowStar className="fa fa-star" aria-hidden="true"></YellowStar>
-        </div>
-      </>
-    );
+  }
+
+  starrender = starsArray.map((element) => {
+    return element;
+  });
 
   return (
     <>
@@ -97,7 +57,7 @@ export default function Card(props) {
             <Stars>{starrender}</Stars>
             <div>
               <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
-              {props.selectedrecipe.min}
+              {props.selectedrecipe.cooking}
             </div>
           </Time>
         </Details>
