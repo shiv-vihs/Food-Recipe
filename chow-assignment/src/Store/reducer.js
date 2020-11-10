@@ -6,7 +6,7 @@ const initialState = {
   RecipeList: {},
 };
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   if (action.type === "CHANGE_TO_LOGIN") {
     return {
       ...state,
@@ -39,3 +39,5 @@ export const reducer = (state = initialState, action) => {
   }
   return state;
 };
+
+export default reducer;

@@ -11,7 +11,7 @@ import {
   SubheadingSpan,
 } from "./style";
 
-export default class Banner extends Component {
+export class Banner extends Component {
   render() {
     return (
       <>
@@ -45,3 +45,4 @@ export default class Banner extends Component {
     );
   }
 }
+export default Banner;

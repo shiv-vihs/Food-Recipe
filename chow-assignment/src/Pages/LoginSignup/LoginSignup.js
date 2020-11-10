@@ -4,7 +4,7 @@ import LoginBackground from "../../Assets/Login.jpeg";
 import Login from "../../Components/Login/Login";
 import Signup from "../../Components/Signup/Signup";
 import { LoginLeft, LoginRight, LoginContainer } from "./styles";
-class LoginSignup extends Component {
+export class LoginSignup extends Component {
   render() {
     let displayOutput;
     if (this.props.sgnup === true) {

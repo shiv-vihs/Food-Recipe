@@ -28,7 +28,7 @@ import {
 } from "../Home/styles";
 import { RecipeBackground, Wrapper } from "./styles";
 import { connect } from "react-redux";
-class RecipePage extends Component {
+export class RecipePage extends Component {
   componentDidMount() {
     if (window.innerWidth <= 767)
       window.scrollTo({ top: 110, left: 0, behavior: "smooth" });

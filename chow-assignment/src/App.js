@@ -15,20 +15,8 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./Themes";
 import { withRouter } from "react-router-dom";
 import MyProvider from "./Context/context";
-// const MyContext= React.createContext();
 
-// class MyProvider extends Component{
-//   state={enteredEmail:''}
-//   render(){
-//     return(
-//       <MyContext.Provider value={{state:this.state, setLoginEmail:(emailEntered)=>this.setState({enteredEmail:emailEntered})}}>
-//         {this.props.children}
-//       </MyContext.Provider>
-//     )
-//   }
-// }
-
-class App extends Component {
+export class App extends Component {
   state = {
     isLoggedIn: false,
     themeSelected: theme.colors.chowDefault,
@@ -69,7 +57,6 @@ class App extends Component {
         <ThemeProvider theme={this.state.themeSelected}>
           <Wrapper>
             <ColorSwitcher themeSelector={this.themeChange} />
-
             {screen}
           </Wrapper>
         </ThemeProvider>

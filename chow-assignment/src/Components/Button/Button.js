@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { SliderButton, SelectedSliderButton } from "./styles";
-export default class Button extends Component {
+export class Button extends Component {
   render() {
     let renderButton;
     if (this.props.SelectedIndex === this.props.ind)
@@ -27,3 +27,4 @@ export default class Button extends Component {
     return <>{renderButton}</>;
   }
 }
+export default Button;

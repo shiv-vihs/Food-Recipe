@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-redux";
-import { reducer } from "./Store/reducer";
+import reducer from "./Store/reducer";
 import { watch } from "./Store/sagas";
 import "regenerator-runtime/runtime";
 

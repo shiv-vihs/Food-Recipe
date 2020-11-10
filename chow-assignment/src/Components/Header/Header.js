@@ -26,7 +26,7 @@ import { connect } from "react-redux";
 import logo from "../../Assets/logo.png";
 import { Link } from "react-router-dom";
 import { NavLink } from "./styles";
-class header extends Component {
+export class Header extends Component {
   render() {
     let dropDown;
     let mobileDiv;
@@ -172,4 +172,4 @@ const mapDispatchToProps = (dispatch) => {
     dropDownState: () => dispatch({ type: "DROP_DOWN_STATE" }),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

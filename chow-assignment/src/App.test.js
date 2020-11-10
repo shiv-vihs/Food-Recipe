@@ -1,9 +1,18 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { configure, shallow, mount } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import { App } from "./App";
+import { LoginSignup } from "./Pages/LoginSignup/LoginSignup";
+import { Wrapper } from "./AppStyle";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+configure({ adapter: new Adapter() });
+
+describe("<App/>", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<App />);
+  });
+  it("should render <Wrapper/>", () => {
+    expect(wrapper.find(Wrapper)).toHaveLength(1);
+  });
 });

@@ -19,7 +19,7 @@ import {
 import { SliderImage } from "../../Home/styles";
 import RecipePhoto from "../../../Assets/recipePhoto-01.jpg";
 
-export default class RecipeDetails extends Component {
+export class RecipeDetails extends Component {
   render() {
     //console.log("in recipe det");
     //console.log(this.props.recipelist);
@@ -150,3 +150,4 @@ export default class RecipeDetails extends Component {
     return <>{recipeDetails}</>;
   }
 }
+export default RecipeDetails;

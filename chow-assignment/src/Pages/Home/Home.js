@@ -40,7 +40,7 @@ import Slider03 from "../../Assets/sliderA_03.jpg";
 import Slider04 from "../../Assets/sliderA_04.jpg";
 import { connect } from "react-redux";
 
-class Body extends Component {
+export class Body extends Component {
   componentDidMount() {
     this.props.onInitRecipeList();
     window.scrollTo(0, 0);

@@ -13,7 +13,7 @@ import {
 
 import { NavLink } from "./styles";
 
-export default function Card(props) {
+export function Card(props) {
   let photo = require("../../Assets/" + props.source + ".jpg");
   var starrender;
   let stars = props.selectedrecipe.rating;
@@ -65,3 +65,4 @@ export default function Card(props) {
     </>
   );
 }
+export default Card;

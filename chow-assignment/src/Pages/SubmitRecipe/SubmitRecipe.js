@@ -10,7 +10,7 @@ import {
   SubmitButton,
 } from "./styles";
 import { connect } from "react-redux";
-class SubmitRecipe extends Component {
+export class SubmitRecipe extends Component {
   state = {
     recipeName: null,
     prepTime: null,
